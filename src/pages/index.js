@@ -1,10 +1,8 @@
-import React from 'react'
+import * as React from 'react'
 import { AdvancedImage } from '@cloudinary/react'
 import { Cloudinary } from '@cloudinary/url-gen'
 
-import cloudinary from 'cloudinary'
-
-const index = () => {
+const IndexPage = () => {
   // Create a Cloudinary instance and set your cloud name.
   const cld = new Cloudinary({
     cloud: {
@@ -18,23 +16,42 @@ const index = () => {
     // notification_url: 'https://mysite.example.com/hooks',
   })
 
-  const imagee = cloudinary.v2.api.update(
-    'woman',
-    {
-      background_removal: 'cloudinary_ai',
-      notification_url: 'https://mysite.example.com/hooks',
-    },
-    function (error, result) {
-      console.log(result)
-    }
-  )
+  const removedBG = cld.image('sample_0ne', {
+    background_removal: 'cloudinary_ai',
+  })
 
   return (
-    <div>
-      <h1>gatsby remove bg images</h1>
-      <AdvancedImage cldImg={myImage} />
-    </div>
+    <>
+      <div className='container'>
+        <h1 class='fw-light text-center text-lg-start mt-4 mb-0'>
+          Remove Image Background
+        </h1>
+        <hr class='mt-2 mb-5' />
+
+        <div className='row text-center text-lg-start'>
+          <div class='col-lg-3 col-md-4 col-6'>
+            <a href='#' class='d-block mb-4 h-100'>
+              <AdvancedImage
+                className='img-fluid img-thumbnail'
+                cldImg={myImage}
+              />
+            </a>
+          </div>
+
+          <div class='col-lg-3 col-md-4 col-6'>
+            <a href='#' class='d-block mb-4 h-100'>
+              <AdvancedImage
+                className='img-fluid img-thumbnail'
+                cldImg={removedBG}
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </>
   )
 }
 
-export default index
+export default IndexPage
+
+export const Head = () => <title>Home Page</title>

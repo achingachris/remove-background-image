@@ -1,14 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: `remove-image-background`,
-    siteUrl: `https://www.yourdomain.tld`
+    title: `remove-bg`,
+    siteUrl: `https://www.yourdomain.tld`,
   },
-  plugins: ["gatsby-plugin-image", "gatsby-plugin-sharp", "gatsby-transformer-sharp", {
-    resolve: 'gatsby-source-filesystem',
-    options: {
-      "name": "images",
-      "path": "./src/images/"
-    },
-    __key: "images"
-  }]
-};
+  plugins: [],
+}
