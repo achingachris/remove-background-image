@@ -13,7 +13,6 @@ const IndexPage = () => {
   // cld.image returns a CloudinaryImage with the configuration set.
   const myImage = cld.image('cld-sample', {
     background_removal: 'cloudinary_ai',
-    // notification_url: 'https://mysite.example.com/hooks',
   })
 
   const removedBG = cld.image('sample_0ne', {
